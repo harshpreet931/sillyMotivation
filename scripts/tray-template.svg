@@ -1,0 +1,19 @@
+<svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+  <!--
+    Menu bar template icon (rendered @2x = 44px for a 22pt status item).
+    Pure black on transparent: macOS recolors template images automatically
+    for light/dark menu bars. Same "money sunrise" glyph as the app icon.
+  -->
+  <g fill="#000000">
+    <!-- rising coin (semicircle above horizon) -->
+    <path d="M 11 27 A 11 11 0 0 1 33 27 Z"/>
+    <!-- inner ring detail: small arc cut -->
+    <path d="M 15.5 27 A 6.5 6.5 0 0 1 28.5 27 L 26.5 27 A 4.5 4.5 0 0 0 17.5 27 Z" fill="#000000" opacity="0.0"/>
+    <!-- horizon line -->
+    <rect x="5" y="29" width="34" height="3" rx="1.5"/>
+    <!-- rays -->
+    <rect x="20.5" y="6" width="3" height="7" rx="1.5"/>
+    <rect x="20.5" y="6" width="3" height="7" rx="1.5" transform="rotate(-48 22 27)"/>
+    <rect x="20.5" y="6" width="3" height="7" rx="1.5" transform="rotate(48 22 27)"/>
+  </g>
+</svg>

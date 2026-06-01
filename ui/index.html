@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Silly Motivation</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="popover">
+    <div class="panel">
+      <!-- noise + glow atmosphere -->
+      <div class="atmosphere"></div>
+
+      <!-- header / drag region -->
+      <header class="header" data-tauri-drag-region>
+        <div class="brand" data-tauri-drag-region>
+          <svg class="brand-icon" width="18" height="18" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g fill="#f0c548">
+              <path d="M 11 27 A 11 11 0 0 1 33 27 Z"/>
+              <rect x="5" y="29" width="34" height="3" rx="1.5"/>
+              <rect x="20.5" y="6" width="3" height="7" rx="1.5"/>
+              <rect x="20.5" y="6" width="3" height="7" rx="1.5" transform="rotate(-48 22 27)"/>
+              <rect x="20.5" y="6" width="3" height="7" rx="1.5" transform="rotate(48 22 27)"/>
+            </g>
+          </svg>
+          <span class="brand-name" data-tauri-drag-region>SILLY&nbsp;MOTIVATION</span>
+        </div>
+        <button class="icon-btn" id="close-btn" title="Hide" aria-label="Hide window">✕</button>
+      </header>
+
+      <!-- ====================== COUNTER VIEW ====================== -->
+      <main class="view view-counter" id="view-counter" hidden>
+
+        <p class="counter-label">YOU'VE PRINTED THIS MONTH</p>
+
+        <div class="counter-hero">
+          <span class="currency-symbol" id="currency-symbol">₹</span>
+          <div class="odometer" id="odometer" aria-live="off"></div>
+        </div>
+
+        <div class="rate-line">
+          <span class="rate-pulse" id="rate-pulse">▲</span>
+          <span class="rate-value" id="rate-value">+0.0000</span>
+          <span class="rate-unit">/ second, forever, even asleep</span>
+        </div>
+
+        <div class="month-progress">
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+          <div class="progress-labels">
+            <span id="progress-day">DAY — OF —</span>
+            <span id="progress-pct">—%</span>
+          </div>
+        </div>
+
+        <!-- silly message -->
+        <div class="fortune" id="fortune">
+          <div class="fortune-stars">✦ ✦ ✦</div>
+          <p class="fortune-text" id="fortune-text">Loading questionable wisdom…</p>
+        </div>
+
+        <div class="counter-actions">
+          <button class="ghost-btn" id="edit-settings-btn">⚙ adjust the printer</button>
+        </div>
+      </main>
+
+      <!-- ====================== SETTINGS VIEW ====================== -->
+      <main class="view view-settings" id="view-settings" hidden>
+
+        <div class="settings-headline">
+          <h1 class="settings-title" id="settings-title">LET'S GET<br/>SILLY RICH</h1>
+          <p class="settings-sub" id="settings-sub">Tell the machine what you make. It does the rest.</p>
+        </div>
+
+        <form id="settings-form" autocomplete="off">
+          <label class="field-label" for="salary-input">MONTHLY SALARY</label>
+          <div class="salary-field">
+            <span class="salary-prefix" id="salary-prefix">₹</span>
+            <input
+              type="text"
+              inputmode="decimal"
+              id="salary-input"
+              class="salary-input"
+              placeholder="100000"
+              spellcheck="false"
+            />
+          </div>
+
+          <label class="field-label">CURRENCY</label>
+          <div class="currency-grid" id="currency-grid">
+            <button type="button" class="chip selected" data-symbol="₹" data-code="INR" data-indian="true">₹ INR</button>
+            <button type="button" class="chip" data-symbol="$" data-code="USD" data-indian="false">$ USD</button>
+            <button type="button" class="chip" data-symbol="€" data-code="EUR" data-indian="false">€ EUR</button>
+            <button type="button" class="chip" data-symbol="£" data-code="GBP" data-indian="false">£ GBP</button>
+            <button type="button" class="chip" data-symbol="¥" data-code="JPY" data-indian="false">¥ JPY</button>
+            <button type="button" class="chip" data-symbol="د.إ" data-code="AED" data-indian="false">د.إ AED</button>
+            <button type="button" class="chip" data-symbol="S$" data-code="SGD" data-indian="false">S$ SGD</button>
+            <button type="button" class="chip chip-custom" id="chip-custom" data-custom="true">✏️ other</button>
+          </div>
+
+          <div class="custom-currency" id="custom-currency" hidden>
+            <div class="custom-row">
+              <div class="custom-col">
+                <label class="field-label" for="custom-symbol">SYMBOL</label>
+                <input type="text" id="custom-symbol" class="text-input" placeholder="₿" maxlength="6" />
+              </div>
+              <div class="custom-col">
+                <label class="field-label" for="custom-code">CODE</label>
+                <input type="text" id="custom-code" class="text-input" placeholder="BTC" maxlength="6" />
+              </div>
+            </div>
+            <label class="toggle-row">
+              <input type="checkbox" id="indian-grouping" />
+              <span class="toggle-track"><span class="toggle-thumb"></span></span>
+              <span class="toggle-label">Indian digit grouping (1,00,000)</span>
+            </label>
+          </div>
+
+          <p class="form-error" id="form-error" hidden></p>
+
+          <button type="submit" class="save-btn" id="save-btn">
+            <span class="save-btn-text">START THE MONEY PRINTER</span>
+          </button>
+
+          <button type="button" class="ghost-btn back-btn" id="back-btn" hidden>
+            ← never mind, back to the money
+          </button>
+        </form>
+      </main>
+
+      <!-- footer -->
+      <footer class="footer">
+        <span class="footer-hint">click anywhere outside to hide</span>
+        <button class="quit-btn" id="quit-btn">quit</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- confetti layer for the save celebration -->
+  <div class="confetti-layer" id="confetti-layer"></div>
+
+  <script src="main.js"></script>
+</body>
+</html>
