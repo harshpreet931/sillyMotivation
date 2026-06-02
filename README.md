@@ -28,6 +28,16 @@ cd src-tauri && cargo tauri build
 | **macOS**   | Live counter right in the menu bar, next to your battery     |
 | **Windows** | Counter rendered inside the tray icon, full amount on hover  |
 | **Linux**   | Tray icon counter + label on KDE; popover via the tray menu  |
+| **iPhone**  | Home screen + lock screen widgets, live counter in the app   |
+
+### iPhone
+
+```bash
+cd ios && xcodegen generate && open SillyMotivation.xcodeproj
+```
+
+Hit ▶ in Xcode. Add the **Money Printer** widget to your home screen or lock screen.
+(Widget numbers refresh every minute — iOS doesn't allow faster. The app itself ticks live.)
 
 ## License
 

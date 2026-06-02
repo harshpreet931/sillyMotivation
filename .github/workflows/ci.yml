@@ -47,3 +47,25 @@ jobs:
       - name: Build
         working-directory: src-tauri
         run: cargo tauri build --ci
+
+  ios:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        working-directory: ios
+        run: xcodegen generate
+
+      - name: Build app + widgets (simulator)
+        working-directory: ios
+        run: |
+          xcodebuild -project SillyMotivation.xcodeproj \
+            -scheme SillyMotivation \
+            -destination 'generic/platform=iOS Simulator' \
+            -configuration Debug \
+            CODE_SIGNING_ALLOWED=NO \
+            build

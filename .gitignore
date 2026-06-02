@@ -10,6 +10,11 @@ Thumbs.db
 .vscode/
 .idea/
 
+# Xcode / iOS (the .xcodeproj is generated from ios/project.yml by XcodeGen)
+ios/SillyMotivation.xcodeproj/
+ios/**/*.xcuserstate
+DerivedData/
+
 # misc
 *.log
 node_modules/
